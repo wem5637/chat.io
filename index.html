@@ -11,7 +11,8 @@
         box-sizing: border-box;
     }
 
-    html, body {
+    html {
+      overflow-x: hidden;
     }
     
     body {
@@ -97,7 +98,7 @@
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
-document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });
+// document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });
 var hfs = ["Hey everyone, have fun soon.","Have fun soon?","Have fun soon?","Have fun soon","Have fun soon","Have fun soon","Have fun soon","Fortune cookie say have fun soon","Great to see you all.  Have fun soon."]
 var person = prompt("Please enter your name", "Anonymous");
   $(function () {
