@@ -2,7 +2,8 @@
 <html>
 
 <head>
-    <title>Socket.IO chat</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+    <link rel="icon" href="http://www.goinginteractive.com/blog/wp-content/uploads/2011/03/Screen-shot-2011-03-09-at-2.20.34-PM1.png">
     <style>
     * {
         margin: 0;
@@ -11,7 +12,8 @@
     }
     
     body {
-        font: 13px Helvetica, Arial;
+        font-size: 20px;
+        font-family: 'Roboto Condensed', sans-serif;
     }
     
     form {
@@ -49,26 +51,70 @@
     #messages li:nth-child(odd) {
         background: #eee;
     }
+    #secret{
+       color:white; 
+       position: absolute;
+       left:150px;
+       top:150px;
+       font-size: 80px;
+       font-family: 'Roboto Condensed', sans-serif;
+    }
+    /* Tooltip container */
+    .tooltip {
+        position: relative;
+    }
+
+    /* Tooltip text */
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+     
+        /* Position the tooltip text - see examples below! */
+        position: absolute;
+        z-index: 1;
+    }
+
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
     </style>
 </head>
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
-var person = prompt("Please enter your name", "Harry Potter");
+var hfs = ["Hey everyone, have fun soon.","Have fun soon?","Have fun soon?","Have fun soon","Have fun soon","Have fun soon","Have fun soon","Fortune cookie say have fun soon","Great to see you all.  Have fun soon."]
+var person = prompt("Please enter your name", "Anonymous");
   $(function () {
     var socket = io();
     $('form').submit(function(){
-      socket.emit('chat message', person+":"+$('#m').val());
+      socket.emit('chat message', {person: person, msg:$('#m').val(), hfs:"have fun soon"});
       $('#m').val('');
       return false;
     });
     socket.on('chat message', function(msg){
-      $('#messages').append($('<li>').text(msg));
+        var num = Math.floor(Math.random()*9)
+        var ok = hfs[num]
+        var elm = $('#messages').append($('<li class="tooltip">').text(msg.person+" says: "+ok).append($('<div class="tooltiptext">').text(msg.msg)))
+      
     });
   });
+function fontChange(target){
+    target.style.color="bisque"
+}
+function backToWhite(target){
+    target.style.color="white"
+}
 </script>
 
 <body>
+    <h1>Have Fun Soon</h1>
+    <h5 id="secret" onmouseover="fontChange(this)" onmouseout="backToWhite(this)">69</h5>
     <ul id="messages"></ul>
     <form action="">
         <input id="m" autocomplete="off" />
