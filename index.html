@@ -17,7 +17,7 @@
     
     body {
         position: relative
-        font-size: 20px;
+        font-size: 40px;
         font-family: 'Roboto Condensed', sans-serif;
     }
     
@@ -36,11 +36,11 @@
         width: 90%;
         margin-right: .5%;
         height: 100%;
-        font-size: 20px;   
+        font-size: 40px;   
     }
     
     form button {
-        font-size: 20px;
+        font-size: 40px;
         width: 9%;
         background: rgb(130, 224, 255);
         border: none;
@@ -55,6 +55,8 @@
     }
     
     #messages li {
+        font-size: 40px;
+
         padding: 5px 10px;
     }
     
@@ -77,7 +79,7 @@
     /* Tooltip text */
     .tooltip .tooltiptext {
         visibility: hidden;
-        width: 120px;
+        width: 450px;
         background-color: black;
         color: #fff;
         text-align: center;
@@ -93,13 +95,18 @@
     .tooltip:hover .tooltiptext {
         visibility: visible;
     }
+
+    #title{
+        font-size: 80px;
+
+    }
     </style>
 </head>
 <script src="/socket.io/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
 <script>
 // document.body.addEventListener('touchmove', function(e){ e.preventDefault(); });
-var hfs = ["Hey everyone, have fun soon.","Have fun soon?","Have fun soon?","Have fun soon","Have fun soon","Have fun soon","Have fun soon","Fortune cookie say have fun soon","Great to see you all.  Have fun soon."]
+var hfs = ["Hey everyone, have fun soon.","Have fun soon?","Have fun soon?","Have fun soon","Have fun soon","Have fun soon","Have fun soon","You, have fun soon","Great to see you all.  Have fun soon."]
 var person = prompt("Please enter your name", "Anonymous");
   $(function () {
     var socket = io();
@@ -124,7 +131,7 @@ function backToWhite(target){
 </script>
 
 <body>
-    <h1>Have Fun Soon</h1>
+    <div id="title">Have Fun Soon</div>
     <h5 id="secret" onmouseover="fontChange(this)" onmouseout="backToWhite(this)">69</h5>
     <ul id="messages"></ul>
     <form action="">
