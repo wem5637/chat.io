@@ -52,11 +52,11 @@
         list-style-type: none;
         margin: 0;
         padding: 0;
+        z-index: 5;
     }
     
     #messages li {
         font-size: 40px;
-
         padding: 5px 10px;
     }
     
@@ -98,7 +98,14 @@
 
     #title{
         font-size: 80px;
+        height:10%;
 
+    }
+    #container{
+        position:fixed;
+        height: 70%;
+        overflow: auto;
+        
     }
     </style>
 </head>
@@ -133,7 +140,9 @@ function backToWhite(target){
 <body>
     <div id="title">Have Fun Soon</div>
     <h5 id="secret" onmouseover="fontChange(this)" onmouseout="backToWhite(this)">69</h5>
-    <ul id="messages"></ul>
+    <div id = "container">
+        <ul id="messages"></ul>
+    </div>
     <form action="">
         <input id="m" autocomplete="off" />
         <button>Send</button>
